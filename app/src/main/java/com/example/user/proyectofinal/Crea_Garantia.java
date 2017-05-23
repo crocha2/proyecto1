@@ -99,7 +99,7 @@ public class Crea_Garantia {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,5);
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,7);
         db = aux.getWritableDatabase();
 
         //insertar forma 1
@@ -116,11 +116,11 @@ public class Crea_Garantia {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,5);
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,7);
         db = aux.getWritableDatabase();
 
         //insertar forma 1
-        sql = "UPDATE garantias SET rma='"+this.getRma()+"', cliente='"+this.getCliente()+"', telefono='"+this.getTelefono()+"', " + "correo='" +this.getCorreo()+"', " + "equipo='" +this.getEquipo()+"', " + "modelo='" +this.getModelo()+"', " + "serie='" +this.getSerie()+"', " + "fecha='" +this.getFecha()+ "where rma ='"+this.getRma()+"'";
+        sql = "UPDATE garantias SET rma='"+this.getRma()+"', cliente='"+this.getCliente()+"', telefono='"+this.getTelefono()+"', " + "correo='" +this.getCorreo()+"', " + "equipo='" +this.getEquipo()+"', " + "modelo='" +this.getModelo()+"', " + "serie='" +this.getSerie()+"', " + "fecha='" +this.getFecha()+ "' where rma ='"+this.getRma()+"'";
 
         db.execSQL(sql);
 
@@ -129,7 +129,20 @@ public class Crea_Garantia {
 
     }
 
+    public void eliminar(Context contexto){
+        //declarar las variables
+        SQLiteDatabase db;
+        String sql;
 
+        //Abrir la conexion de base datos en modo escritura
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,7);
+        db = aux.getWritableDatabase();
+
+        sql = "DELETE FROM garantias where rma='"+this.getRma()+"'";
+        db.execSQL(sql);
+        db.close();
+
+    }
 
 
 

@@ -1,6 +1,7 @@
 package com.example.user.proyectofinal;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -138,7 +139,7 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    public void editar(View v){
+    public void modificar(View v){
         Crea_Garantia g,g2;
         String rma,cliente,telefono,correo,equipo,modelo, serie, fecha;
         if(validarRMA()) {
@@ -157,10 +158,44 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
                 g2 = new Crea_Garantia(rma,cliente,telefono,correo,equipo,modelo, serie, fecha);
                 g2.modificar(getApplicationContext());
 
-                Toast.makeText(getApplicationContext(), "Persona Modificada Exitosamente",
+                Toast.makeText(getApplicationContext(), "Registro Modificada Exitosamente",
                         Toast.LENGTH_SHORT).show();
 
                 limpiar();
+            }
+        }
+    }
+
+    public void eliminar(View v){
+        Crea_Garantia g;
+        if(validarRMA()) {
+            g = Datos.buscarGarantia(getApplicationContext(), cajaRMA.getText().toString());
+            if(g!=null){
+                AlertDialog.Builder ventana = new AlertDialog.Builder(this);
+                ventana.setTitle("Confirmación");
+                ventana.setMessage("¿Está seguro que desea eliminar este registro?");
+                ventana.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Crea_Garantia g;
+                        g = Datos.buscarGarantia(getApplicationContext(), cajaRMA.getText().toString());
+
+                        g.eliminar(getApplicationContext());
+                        limpiar();
+                        Toast.makeText(getApplicationContext(), "Persona Eliminada Exitosamente",
+                                Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+                ventana.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cajaRMA.requestFocus();
+                    }
+                });
+
+                ventana.show();
             }
         }
     }

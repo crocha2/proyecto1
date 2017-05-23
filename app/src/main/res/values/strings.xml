@@ -29,6 +29,10 @@
     <string name="error_8">Por favor digite la Fecha</string>
     <string name="numero">No.</string>
     <string name="registrado">Registrado exitosamente</string>
+    <string name="ingreso_producto">Ingreso De Producto</string>
+    <string name="lista_producto">Lista De Productos Disponibles</string>
+    <string name="productos">Productos</string>
+    <string name="descripcion">Descripcion</string>
     <string-array name="opciones">
         <item>@string/garantias</item>
         <item>@string/prestamos</item>
@@ -38,5 +42,9 @@
     <string-array name="garantias">
         <item>@string/ingreso</item>
         <item>@string/equipos_garantias</item>
+    </string-array>
+    <string-array name="productos">
+        <item>@string/ingreso_producto</item>
+        <item>@string/lista_producto</item>
     </string-array>
 </resources>

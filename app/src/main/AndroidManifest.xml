@@ -18,7 +18,10 @@
         </activity>
         <activity android:name=".Ingreso" />
         <activity android:name=".Garantias" />
-        <activity android:name=".Lista_Garantias"></activity>
+        <activity android:name=".Lista_Garantias" />
+        <activity android:name=".Productos_Disponibles" />
+        <activity android:name=".Ingreso_Producto" />
+        <activity android:name=".Lista_Productos" />
     </application>
 
 </manifest>
