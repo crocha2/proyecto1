@@ -91,6 +91,7 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         cajaEquipo.setText("");
         cajaModelo.setText("");
         cajaSerie.setText("");
+        cajaFecha.setText("");
         cajaRMA.requestFocus();
     }
 
@@ -119,12 +120,59 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    public void buscar(View v){
+        Crea_Garantia g;
+        String pasatiempos;
+        if(validarRMA()) {
+            g = Datos.buscarGarantia(getApplicationContext(), cajaRMA.getText().toString());
+            if(g!=null){
+                cajaRMA.setText(g.getRma());
+                cajaCliente.setText(g.getCliente());
+                cajaTelefono.setText(g.getTelefono());
+                cajaCorreo.setText(g.getCorreo());
+                cajaEquipo.setText(g.getEquipo());
+                cajaModelo.setText(g.getModelo());
+                cajaSerie.setText(g.getSerie());
+                cajaFecha.setText(g.getFecha());
+            }
+        }
+    }
 
+    public void editar(View v){
+        Crea_Garantia g,g2;
+        String rma,cliente,telefono,correo,equipo,modelo, serie, fecha;
+        if(validarRMA()) {
+            g = Datos.buscarGarantia(getApplicationContext(), cajaRMA.getText().toString());
+            if(g!=null){
 
+                rma = cajaRMA.getText().toString();
+                cliente = cajaCliente.getText().toString();
+                telefono = cajaTelefono.getText().toString();
+                correo = cajaCorreo.getText().toString();
+                equipo = cajaEquipo.getText().toString();
+                modelo = cajaModelo.getText().toString();
+                serie = cajaSerie.getText().toString();
+                fecha = cajaFecha.getText().toString();
 
+                g2 = new Crea_Garantia(rma,cliente,telefono,correo,equipo,modelo, serie, fecha);
+                g2.modificar(getApplicationContext());
 
+                Toast.makeText(getApplicationContext(), "Persona Modificada Exitosamente",
+                        Toast.LENGTH_SHORT).show();
 
+                limpiar();
+            }
+        }
+    }
 
+    public boolean validarRMA() {
+        if (cajaRMA.getText().toString().isEmpty()) {
+            cajaRMA.setError(getResources().getString(R.string.error_1));
+            cajaRMA.requestFocus();
+            return false;
+        }
+        return true;
+    }
 
 
 

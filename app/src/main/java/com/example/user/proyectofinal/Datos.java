@@ -19,7 +19,7 @@ public class Datos {
         String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
         Crea_Garantia g;
 
-        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,1);
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,5);
         db = aux.getReadableDatabase();
 
         sql ="select * from garantias";
@@ -43,6 +43,36 @@ public class Datos {
         db.close();
 
         return garantia;
+    }
+
+    public static Crea_Garantia buscarGarantia(Context contexto, String rm){
+
+        //Declarar variables
+        SQLiteDatabase db;
+        String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
+        Crea_Garantia g=null;
+        //Abrir conexión de lectura
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,5);
+        db = aux.getReadableDatabase();
+
+        //Cursor
+        sql ="select * from garantias where rma ='"+rm+"'";
+        Cursor c = db.rawQuery(sql,null);
+
+        //Recorrido del cursor
+        if(c.moveToFirst()){
+            rma = c.getString(0);
+            cliente = c.getString(1);
+            telefono =c.getString(2);
+            correo = c.getString(3);
+            equipo = c.getString(4);
+            modelo = c.getString(5);
+            serie = c.getString(6);
+            fecha = c.getString(7);
+            g = new Crea_Garantia(rma, cliente, telefono, correo, equipo, modelo, serie, fecha);
+        }
+        db.close();
+        return g;
     }
 
 }

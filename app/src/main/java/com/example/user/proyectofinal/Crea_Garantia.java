@@ -99,22 +99,32 @@ public class Crea_Garantia {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,1);
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,5);
         db = aux.getWritableDatabase();
 
         //insertar forma 1
-        sql = "INSERT INTO garantias values('"
-                +this.getRma()+"','"
-                +this.getCliente()+"','"
-                +this.getTelefono()+"','"
-                +this.getCorreo()+"','"
-                +this.getEquipo()+"','"
-                +this.getModelo()+"','"
-                +this.getSerie()+"','"
-                +this.getFecha()+"')";
+        sql = "INSERT INTO garantias values('"+this.getRma()+"','"+this.getCliente()+"','"+this.getTelefono()+"','"+this.getCorreo()+"','"+this.getEquipo()+"','"+this.getModelo()+"','"+this.getSerie()+"','"+this.getFecha()+"')";
+
+        db.execSQL(sql);
+        db.close();
+
+    }
+
+    public void modificar(Context contexto){
+        //declarar las variables
+        SQLiteDatabase db;
+        String sql;
+
+        //Abrir la conexion de base datos en modo escritura
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,5);
+        db = aux.getWritableDatabase();
+
+        //insertar forma 1
+        sql = "UPDATE garantias SET rma='"+this.getRma()+"', cliente='"+this.getCliente()+"', telefono='"+this.getTelefono()+"', " + "correo='" +this.getCorreo()+"', " + "equipo='" +this.getEquipo()+"', " + "modelo='" +this.getModelo()+"', " + "serie='" +this.getSerie()+"', " + "fecha='" +this.getFecha()+ "where rma ='"+this.getRma()+"'";
 
         db.execSQL(sql);
 
+        //cerrar conexion
         db.close();
 
     }

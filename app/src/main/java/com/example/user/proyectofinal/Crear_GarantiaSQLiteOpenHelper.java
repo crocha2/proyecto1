@@ -23,7 +23,7 @@ public class Crear_GarantiaSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST garantias");
+        db.execSQL("DROP TABLE IF EXISTS garantias");
         db.execSQL(sql);
     }
 }

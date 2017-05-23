@@ -33,7 +33,10 @@ public class Garantias extends AppCompatActivity {
                         i = new Intent(Garantias.this,Ingreso.class);
                         startActivity(i);
                         break;
-
+                    case 1:
+                        i = new Intent(Garantias.this,Lista_Garantias.class);
+                        startActivity(i);
+                        break;
                 }
             }
         });
