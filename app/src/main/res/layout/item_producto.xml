@@ -10,12 +10,13 @@
 
         <ImageView
             android:id="@+id/imgFoto"
-            android:layout_width="161dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="298dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
             app:srcCompat="@drawable/ups1000" />
 
         <TextView
@@ -23,9 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginLeft="44dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/imgFoto"
             android:layout_toRightOf="@+id/imgFoto"
             android:text="TextView"
@@ -51,6 +52,18 @@
             android:layout_below="@+id/txtSerieP"
             android:layout_marginTop="13dp"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/txtClienteP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtDescripcionP"
+            android:layout_alignStart="@+id/txtDescripcionP"
+            android:layout_below="@+id/txtDescripcionP"
+            android:layout_marginTop="13dp"
+            android:text="TextView"
+            android:textSize="18sp" />
+
     </RelativeLayout>
 
 </LinearLayout>

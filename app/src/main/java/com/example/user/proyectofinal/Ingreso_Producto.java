@@ -11,6 +11,7 @@ public class Ingreso_Producto extends AppCompatActivity {
     private EditText cajaModelo;
     private EditText cajaSerie;
     private EditText cajaDescripcion;
+    private EditText cajaCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +20,11 @@ public class Ingreso_Producto extends AppCompatActivity {
         cajaModelo = (EditText)findViewById(R.id.txtModeloPro);
         cajaSerie = (EditText)findViewById(R.id.txtSeriePro);
         cajaDescripcion = (EditText)findViewById(R.id.txtDescripcion);
+        cajaCliente = (EditText)findViewById(R.id.txtClientePro);
     }
 
-    public void guardar(View v){
-        String  foto, serie, modelo, descripcion, aux;
+    public void guardarPro(View v){
+        String  foto, serie, modelo, descripcion, cliente;
 
         Producto p;
 
@@ -30,28 +32,12 @@ public class Ingreso_Producto extends AppCompatActivity {
             serie = cajaSerie.getText().toString();
             modelo = cajaModelo.getText().toString();
             descripcion = cajaDescripcion.getText().toString();
+            cliente = cajaCliente.getText().toString();
 
-            if (modelo == "ups1000"){
-                foto = String.valueOf(numeroFoto());
-            }
-            if (modelo == "ups1300"){
-                foto = String.valueOf(numeroFoto()+1);
-            }
-            if (modelo == "ups1500"){
-                foto = String.valueOf(numeroFoto())+2;
-            }
-            if (modelo == "br24bpg"){
-                foto = String.valueOf(numeroFoto())+3;
-            }
-            if (modelo == "bge50ml"){
-                foto = String.valueOf(numeroFoto())+4;
-            }
-            if (modelo == "be350g-lm"){
-                foto = String.valueOf(numeroFoto())+5;
-            }
+            foto = String.valueOf(numeroFoto(modelo));
 
-            //p = new Producto(foto, serie, modelo, descripcion);
-            //p.guardarPro(getApplicationContext());
+            p = new Producto(foto, serie, modelo, descripcion, cliente);
+            p.guardarPro(getApplicationContext());
 
             Toast.makeText(getApplicationContext(), "Producto Guardado Exitosamente",
                     Toast.LENGTH_SHORT).show();
@@ -60,11 +46,38 @@ public class Ingreso_Producto extends AppCompatActivity {
         }
     }
 
-    public int numeroFoto(){
+    public int numeroFoto(String modelo){
+        int numero, aux = 0;
+
         int fotos[] = {R.drawable.ups1000,R.drawable.ups1300,R.drawable.ups1500,R.drawable.upsbr24,R.drawable.upsbge,R.drawable.upsbe};
-        int numero = 0;
-        return fotos[numero];
+
+            if (modelo == "ups1000"){
+                numero = fotos[0];
+                aux = numero;
+
+            }if (modelo == "ups1300"){
+                numero = fotos[1];
+                aux = numero;
+
+            }if (modelo == "ups1500"){
+                numero = fotos[2];
+                aux = numero;
+
+            }if (modelo == "br24bpg"){
+                numero = fotos[3];
+                aux = numero;
+
+            }if (modelo == "bge50ml"){
+                numero = fotos[4];
+                aux = numero;
+
+            }if (modelo == "be350g-lm"){
+                numero = fotos[5];
+                aux = numero;
+            }
+        return fotos[aux];
     }
+
 
     public boolean validarTodo(){
 
@@ -92,8 +105,22 @@ public class Ingreso_Producto extends AppCompatActivity {
         cajaSerie.setText("");
         cajaModelo.setText("");
         cajaDescripcion.setText("");
+        cajaCliente.setText("");
         cajaSerie.requestFocus();
 
+    }
+
+    public void buscar(View v){
+        Producto p;
+        if(validarSerie()) {
+            p = Datos.buscarProducto(getApplicationContext(), cajaSerie.getText().toString());
+            if(p!=null){
+                cajaSerie.setText(p.getSerie());
+                cajaModelo.setText(p.getModelo());
+                cajaDescripcion.setText(p.getDescripcion());
+                cajaCliente.setText(p.getCliente());
+            }
+        }
     }
 
 

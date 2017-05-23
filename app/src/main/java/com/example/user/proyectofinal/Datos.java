@@ -19,7 +19,7 @@ public class Datos {
         String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
         Crea_Garantia g;
 
-        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,8);
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,4);
         db = aux.getReadableDatabase();
 
         sql ="select * from garantias";
@@ -52,7 +52,7 @@ public class Datos {
         String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
         Crea_Garantia g=null;
         //Abrir conexión de lectura
-        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,8);
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,4);
         db = aux.getReadableDatabase();
 
         //Cursor
@@ -79,10 +79,10 @@ public class Datos {
         ArrayList<Producto> producto = new ArrayList<>();
 
         SQLiteDatabase db;
-        String sql, foto, serie, modelo, descripcion;
+        String sql, foto, serie, modelo, descripcion, cliente;
         Producto p;
 
-        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,8);
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,4);
         db = aux.getReadableDatabase();
 
         sql ="select * from productos";
@@ -94,8 +94,9 @@ public class Datos {
                 serie = c.getString(1);
                 modelo = c.getString(2);
                 descripcion = c.getString(3);
+                cliente = c.getString(4);
 
-                p = new Producto(foto, serie, modelo, descripcion);
+                p = new Producto(foto, serie, modelo, descripcion, cliente);
                 producto.add(p);
 
             }while (c.moveToNext());
@@ -109,10 +110,10 @@ public class Datos {
 
         //Declarar variables
         SQLiteDatabase db;
-        String sql, foto, serie, modelo, descripcion;
+        String sql, foto, serie, modelo, descripcion, cliente;
         Producto p=null;
         //Abrir conexión de lectura
-        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,8);
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,4);
         db = aux.getReadableDatabase();
 
         //Cursor
@@ -125,7 +126,8 @@ public class Datos {
             serie = c.getString(1);
             modelo = c.getString(2);
             descripcion = c.getString(3);
-            p = new Producto(foto, serie, modelo, descripcion);
+            cliente = c.getString(4);
+            p = new Producto(foto, serie, modelo, descripcion, cliente);
         }
         db.close();
         return p;

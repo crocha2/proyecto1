@@ -41,7 +41,7 @@ public class AdaptadorProducto extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        TextView cajaserie,cajaModelo,cajaDescripcion;
+        TextView cajaserie,cajaModelo,cajaDescripcion, cajaCliente;
         ImageView foto;
         LayoutInflater inflater;
         View itemView;
@@ -52,12 +52,14 @@ public class AdaptadorProducto extends BaseAdapter {
         cajaserie= (TextView)itemView.findViewById(R.id.txtSerieP);
         cajaModelo=(TextView)itemView.findViewById(R.id.txtSeriePro);
         cajaDescripcion=(TextView)itemView.findViewById(R.id.txtDescripcionP);
+        cajaCliente=(TextView)itemView.findViewById(R.id.txtClienteP);
         foto = (ImageView)itemView.findViewById(R.id.imgFoto);
 
         foto.setImageResource(Integer.parseInt(productos.get(position).getFoto()));
         cajaModelo.setText(productos.get(position).getModelo());
         cajaserie.setText(productos.get(position).getSerie());
         cajaDescripcion.setText(productos.get(position).getDescripcion());
+        cajaCliente.setText(productos.get(position).getDescripcion());
 
         return itemView;
     }

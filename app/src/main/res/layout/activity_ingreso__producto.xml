@@ -61,6 +61,14 @@
             android:hint="@string/descripcion"
             android:inputType="textPersonName" />
 
+        <EditText
+            android:id="@+id/txtClientePro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/cliente"
+            android:inputType="textPersonName" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="58dp"
@@ -71,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="guardar"
+                android:onClick="guardarPro"
                 android:text="@string/registrar" />
 
             <Button

@@ -13,12 +13,22 @@ public class Producto {
     private String serie;
     private String modelo;
     private String Descripcion;
+    private String cliente;
 
-    public Producto(String foto, String serie, String modelo, String descripcion) {
+    public Producto(String foto, String serie, String modelo, String descripcion, String cliente) {
         this.foto = foto;
         this.serie = serie;
         this.modelo = modelo;
-        Descripcion = descripcion;
+        this.Descripcion = descripcion;
+        this.cliente = cliente;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public String getFoto() {
@@ -59,11 +69,11 @@ public class Producto {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,8);
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,4);
         db = aux.getWritableDatabase();
 
         //insertar forma 1
-        sql = "INSERT INTO productos values('"+this.getFoto()+"','"+this.getSerie()+"','"+this.getModelo()+"','"+this.getDescripcion()+"')";
+        sql = "INSERT INTO productos values('"+this.getFoto()+"','"+this.getSerie()+"','"+this.getModelo()+"','"+this.getDescripcion()+"','"+this.getCliente()+"')";
 
         db.execSQL(sql);
         db.close();
