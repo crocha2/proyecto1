@@ -33,6 +33,10 @@ public class Principal extends AppCompatActivity {
                         i = new Intent(Principal.this,Garantias.class);
                         startActivity(i);
                         break;
+                    case 1:
+                        i = new Intent(Principal.this,Productos_Disponibles.class);
+                        startActivity(i);
+                        break;
 
                 }
             }

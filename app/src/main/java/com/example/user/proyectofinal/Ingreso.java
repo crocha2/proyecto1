@@ -38,8 +38,8 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         cajaTelefono = (EditText)findViewById(R.id.txtTelefono);
         cajaCorreo = (EditText)findViewById(R.id.txtCorreo);
         cajaEquipo = (EditText)findViewById(R.id.txtEquipo);
-        cajaModelo = (EditText)findViewById(R.id.txtModelo);
-        cajaSerie = (EditText)findViewById(R.id.txtSerie);
+        cajaModelo = (EditText)findViewById(R.id.txtSeriePro);
+        cajaSerie = (EditText)findViewById(R.id.txtSeriePro);
 
         fecha = (Button)findViewById(R.id.btnFecha);
         cajaFecha = (EditText)findViewById(R.id.txtFecha);

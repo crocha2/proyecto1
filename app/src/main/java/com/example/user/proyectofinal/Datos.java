@@ -19,7 +19,7 @@ public class Datos {
         String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
         Crea_Garantia g;
 
-        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,7);
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,8);
         db = aux.getReadableDatabase();
 
         sql ="select * from garantias";
@@ -52,7 +52,7 @@ public class Datos {
         String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
         Crea_Garantia g=null;
         //Abrir conexión de lectura
-        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,7);
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,8);
         db = aux.getReadableDatabase();
 
         //Cursor
@@ -73,6 +73,62 @@ public class Datos {
         }
         db.close();
         return g;
+    }
+
+    public static ArrayList<Producto> traerProducto(Context contexto){
+        ArrayList<Producto> producto = new ArrayList<>();
+
+        SQLiteDatabase db;
+        String sql, foto, serie, modelo, descripcion;
+        Producto p;
+
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,8);
+        db = aux.getReadableDatabase();
+
+        sql ="select * from productos";
+        Cursor c = db.rawQuery(sql,null);
+
+        if(c.moveToFirst()){
+            do{
+                foto = c.getString(0);
+                serie = c.getString(1);
+                modelo = c.getString(2);
+                descripcion = c.getString(3);
+
+                p = new Producto(foto, serie, modelo, descripcion);
+                producto.add(p);
+
+            }while (c.moveToNext());
+        }
+        db.close();
+
+        return producto;
+    }
+
+    public static Producto buscarProducto(Context contexto, String ser){
+
+        //Declarar variables
+        SQLiteDatabase db;
+        String sql, foto, serie, modelo, descripcion;
+        Producto p=null;
+        //Abrir conexión de lectura
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,8);
+        db = aux.getReadableDatabase();
+
+        //Cursor
+        sql ="select * from productos where serie ='"+ser+"'";
+        Cursor c = db.rawQuery(sql,null);
+
+        //Recorrido del cursor
+        if(c.moveToFirst()){
+            foto = c.getString(0);
+            serie = c.getString(1);
+            modelo = c.getString(2);
+            descripcion = c.getString(3);
+            p = new Producto(foto, serie, modelo, descripcion);
+        }
+        db.close();
+        return p;
     }
 
 }

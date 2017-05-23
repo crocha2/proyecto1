@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgFoto"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="298dp"
+            app:srcCompat="@drawable/ups1000" />
+
+        <TextView
+            android:id="@+id/txtSeriePro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@+id/imgFoto"
+            android:layout_toRightOf="@+id/imgFoto"
+            android:text="TextView"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/txtSerieP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtSeriePro"
+            android:layout_alignStart="@+id/txtSeriePro"
+            android:layout_below="@+id/txtSeriePro"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtDescripcionP"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtSerieP"
+            android:layout_alignStart="@+id/txtSerieP"
+            android:layout_below="@+id/txtSerieP"
+            android:layout_marginTop="13dp"
+            android:text="TextView" />
+    </RelativeLayout>
+
+</LinearLayout>
