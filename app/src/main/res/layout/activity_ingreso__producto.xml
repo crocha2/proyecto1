@@ -45,13 +45,17 @@
                 android:text="@string/buscar" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/txtModeloPro"
+        <TextView
+            android:text="@string/modelo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/modelo"
-            android:inputType="textPersonName" />
+            android:id="@+id/textView11"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cmbModelo" />
 
         <EditText
             android:id="@+id/txtDescripcion"

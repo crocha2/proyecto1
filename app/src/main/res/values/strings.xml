@@ -49,4 +49,12 @@
         <item>@string/ingreso_producto</item>
         <item>@string/lista_producto</item>
     </string-array>
+    <string-array name="modelos">
+        <item>@drawable/ups1000</item>
+        <item>@drawable/ups1300</item>
+        <item>@drawable/ups1500</item>
+        <item>@drawable/br24bpg</item>
+        <item>@drawable/bge50ml</item>
+        <item>@drawable/be350g-lm</item>
+    </string-array>
 </resources>
