@@ -99,7 +99,7 @@ public class Crea_Garantia {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null);
         db = aux.getWritableDatabase();
 
         //insertar forma 1
@@ -116,7 +116,7 @@ public class Crea_Garantia {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null);
         db = aux.getWritableDatabase();
 
         //insertar forma 1
@@ -135,7 +135,7 @@ public class Crea_Garantia {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        Crear_GarantiaSQLiteOpenHelper  aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null);
         db = aux.getWritableDatabase();
 
         sql = "DELETE FROM garantias where rma='"+this.getRma()+"'";

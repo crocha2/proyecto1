@@ -69,7 +69,7 @@ public class Producto {
         String sql;
 
         //Abrir la conexion de base datos en modo escritura
-        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,6);
         db = aux.getWritableDatabase();
 
         //insertar forma 1

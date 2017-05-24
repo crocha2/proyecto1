@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/telefono"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/txtCorreo"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/correo"
-            android:inputType="textPersonName" />
+            android:inputType="textWebEmailAddress" />
 
         <EditText
             android:id="@+id/txtEquipo"
@@ -78,7 +78,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/txtSeriePro"
+            android:id="@+id/txtModelo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -86,7 +86,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/txtSeriePro"
+            android:id="@+id/txtSerie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -134,7 +134,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/limpiar" />
+                android:text="@string/limpiar"
+                android:onClick="borrar" />
         </LinearLayout>
 
         <LinearLayout

@@ -19,7 +19,7 @@ public class Datos {
         String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
         Crea_Garantia g;
 
-        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null);
         db = aux.getReadableDatabase();
 
         sql ="select * from garantias";
@@ -52,7 +52,7 @@ public class Datos {
         String sql, rma, cliente, telefono, correo, equipo, modelo, serie, fecha;
         Crea_Garantia g=null;
         //Abrir conexión de lectura
-        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        Crear_GarantiaSQLiteOpenHelper aux = new Crear_GarantiaSQLiteOpenHelper(contexto,"DBgarantias",null);
         db = aux.getReadableDatabase();
 
         //Cursor
@@ -75,6 +75,7 @@ public class Datos {
         return g;
     }
 
+
     public static ArrayList<Producto> traerProducto(Context contexto){
         ArrayList<Producto> producto = new ArrayList<>();
 
@@ -82,7 +83,7 @@ public class Datos {
         String sql, foto, serie, modelo, descripcion, cliente;
         Producto p;
 
-        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,6);
         db = aux.getReadableDatabase();
 
         sql ="select * from productos";
@@ -113,7 +114,7 @@ public class Datos {
         String sql, foto, serie, modelo, descripcion, cliente;
         Producto p=null;
         //Abrir conexión de lectura
-        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,4);
+        ProductoSQLiteOpenHelper aux = new ProductoSQLiteOpenHelper(contexto,"DBgarantias",null,6);
         db = aux.getReadableDatabase();
 
         //Cursor

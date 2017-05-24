@@ -20,9 +20,11 @@
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
     <string name="error_1">Por favor digite el RMA</string>
+    <string name="error1_4">Rma existente!</string>
     <string name="error_2">Por favor digite el Cliente</string>
     <string name="error_3">Por favor digite el Telefono</string>
     <string name="error_4">Por favor digite el Correo</string>
+    <string name="error4_1">correo no valido, ejemplo: nombre@correo.com</string>
     <string name="error_5">Por favor digite el Equipo</string>
     <string name="error_6">Por favor digite el Modelo</string>
     <string name="error_7">Por favor digite la Serie</string>

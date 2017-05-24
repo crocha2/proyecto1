@@ -8,11 +8,15 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Ingreso extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,8 +42,8 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         cajaTelefono = (EditText)findViewById(R.id.txtTelefono);
         cajaCorreo = (EditText)findViewById(R.id.txtCorreo);
         cajaEquipo = (EditText)findViewById(R.id.txtEquipo);
-        cajaModelo = (EditText)findViewById(R.id.txtSeriePro);
-        cajaSerie = (EditText)findViewById(R.id.txtSeriePro);
+        cajaModelo = (EditText)findViewById(R.id.txtModelo);
+        cajaSerie = (EditText)findViewById(R.id.txtSerie);
 
         fecha = (Button)findViewById(R.id.btnFecha);
         cajaFecha = (EditText)findViewById(R.id.txtFecha);
@@ -47,8 +51,22 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    public boolean buscarExistente(){
+        Crea_Garantia g;
+        if(validarRMA()) {
+            g = Datos.buscarGarantia(getApplicationContext(), cajaRMA.getText().toString());
+            if(g!=null){
+                cajaRMA.setError(getResources().getString(R.string.error1_4));
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     public boolean validar(){
+
+
         if(cajaRMA.getText().toString().isEmpty()){
             cajaRMA.setError(getResources().getString(R.string.error_1));
             return false;
@@ -63,6 +81,10 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         }
         if(cajaCorreo.getText().toString().isEmpty()){
             cajaCorreo.setError(getResources().getString(R.string.error_4));
+            return false;
+        }
+        if (!isEmailValid(cajaCorreo.getText().toString())){
+            cajaCorreo.setError(getResources().getString(R.string.error4_1));
             return false;
         }
         if(cajaEquipo.getText().toString().isEmpty()){
@@ -84,6 +106,22 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         return  true;
     }
 
+    public static boolean isEmailValid(String email) {
+        boolean isValid = false;
+
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public void borrar(View v){limpiar();}
+
     public void limpiar(){
         cajaRMA.setText("");
         cajaCliente.setText("");
@@ -100,7 +138,7 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
         String rma,cliente,telefono,correo,equipo,modelo, serie, fecha;
         Crea_Garantia g;
 
-        if(validar()){
+        if(validar()&& buscarExistente()){
             rma = cajaRMA.getText().toString();
             cliente = cajaCliente.getText().toString();
             telefono = cajaTelefono.getText().toString();
@@ -123,7 +161,6 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
 
     public void buscar(View v){
         Crea_Garantia g;
-        String pasatiempos;
         if(validarRMA()) {
             g = Datos.buscarGarantia(getApplicationContext(), cajaRMA.getText().toString());
             if(g!=null){
